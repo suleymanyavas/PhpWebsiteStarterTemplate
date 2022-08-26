@@ -11,7 +11,7 @@ if (isset($_POST['signup-submit'])) {
 
     if (empty($username) || empty($email) || empty($password) || empty($passwordRepeat)) { //error handler for username, email, password and repeat password
 
-        header("Location: ../signup.php?error=emptyfields&uid=" . $username . "&mail=" . $email);
+        header("Location: ../signup.php?error=emptyfields&uid=".$username."&mail=".$email);
 
         exit(); //after user makes a mistake this method stops the script from running
     } else if (!filter_var($email, FILTER_VALIDATE_EMAIL) && !preg_match("/^[a-zA-Z0-9]*$/", $username)) {
@@ -24,7 +24,7 @@ if (isset($_POST['signup-submit'])) {
         header("Location: ../signup.php?error=invaliduid&mail=" . $email);
         exit();
     } else if ($password !== $passwordRepeat) {
-        header("Location: ../signup.php?error=passwordcheck=" . $username . "&mail=" . $email);
+        header("Location: ../signup.php?error=passwordcheck=".$username . "&mail=".$email);
         exit();
     } else {
         $sql = "SELECT uidUsers FROM users WHERE uidUsers=?"; //prepared statement for secuirity of our Database
